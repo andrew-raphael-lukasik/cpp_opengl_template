@@ -1,14 +1,18 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.11)
 project(MyProjectName)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(spdlog REQUIRED)
+find_package(OpenGL REQUIRED)
+find_package(glfw3 3.4 REQUIRED)
 
 add_executable(MyProjectName src/main.cpp)
 
 target_link_libraries(MyProjectName spdlog::spdlog)
+target_link_libraries(MyProjectName OpenGL::GL)
+target_link_libraries(MyProjectName glfw)
 
 set_target_properties(MyProjectName PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
