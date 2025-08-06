@@ -12,8 +12,9 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
-#define STB_PERLIN_IMPLEMENTATION
+#define STB_IMAGE_IMPLEMENTATION
 #include <stb/stb_image.h>
+#define STB_PERLIN_IMPLEMENTATION
 #include <stb/stb_perlin.h>
 
 void framebuffer_size_changed_callback(GLFWwindow* window, int width, int height)
