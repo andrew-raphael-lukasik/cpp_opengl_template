@@ -6,6 +6,24 @@
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/basic_file_sink.h>
 
+void framebuffer_size_changed_callback(GLFWwindow* window, int width, int height)
+{
+    glViewport(0, 0, width, height);
+    spdlog::error("window size changed to: {} : {}", width, height);
+}
+
+void error_callback(int error, const char* description)
+{
+    spdlog::error("Error: {}", description);
+    fprintf(stderr, "Error: %s\n", description);
+}
+
+static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, GLFW_TRUE);
+}
+
 // src: https://iquilezles.org/articles/palettes/
 glm::vec3 palette( const float t, const glm::vec3 a, const glm::vec3 b, const glm::vec3 c, const glm::vec3 d ) { return a + b*cos(6.283185f*(c*t+d)); }
 
@@ -20,6 +38,7 @@ int main ()
         spdlog::error("glfwInit() failed");
         return -1;
     }
+    glfwSetErrorCallback(error_callback);
 
     GLFWwindow* window = glfwCreateWindow(800, 600, "hello opengl", NULL, NULL);
     if (!window) {
@@ -27,8 +46,10 @@ int main ()
         glfwTerminate();
         return -1;
     }
+    glfwSetKeyCallback(window, key_callback);
 
     glfwMakeContextCurrent(window);
+    glfwSetFramebufferSizeCallback(window, framebuffer_size_changed_callback);
     while (!glfwWindowShouldClose(window))
     {
         float time = glfwGetTime();
