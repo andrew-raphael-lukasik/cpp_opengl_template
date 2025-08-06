@@ -40,10 +40,12 @@ glm::vec3 palette( const float t, const glm::vec3 a, const glm::vec3 b, const gl
 
 int main ()
 {
+    // create file logger
     auto file_logger = spdlog::basic_logger_mt("file_logger", "log.txt", true);
     spdlog::set_default_logger(file_logger);
     spdlog::info("program started");
 
+    // initialize glfw
     if (!glfwInit())
     {
         spdlog::error("glfwInit() failed");
@@ -51,6 +53,7 @@ int main ()
     }
     glfwSetErrorCallback(error_callback);
 
+    // create window
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -61,10 +64,11 @@ int main ()
         return -1;
     }
     glfwSetKeyCallback(window, key_callback);
-
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1);// 1 = vsync
     glfwSetFramebufferSizeCallback(window, framebuffer_size_changed_callback);
+
+    // main program loop
     while (!glfwWindowShouldClose(window))
     {
         double time = glfwGetTime();
@@ -77,6 +81,7 @@ int main ()
         glfwPollEvents();
     }
 
+    // shut down gracefully
     spdlog::info("program was closed");
     glfwTerminate();
     return 0;
