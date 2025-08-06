@@ -1,10 +1,20 @@
+#include <spdlog/spdlog.h>
+#include <spdlog/sinks/basic_file_sink.h>
+
 #include <GLFW/glfw3.h>
+
 #include <glm/glm.hpp>
 #include <glm/vec3.hpp>
 #include <glm/mat3x3.hpp>
 #include <glm/mat4x4.hpp>
-#include <spdlog/spdlog.h>
-#include <spdlog/sinks/basic_file_sink.h>
+
+#include <assimp/cimport.h>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+
+#define STB_PERLIN_IMPLEMENTATION
+#include <stb/stb_image.h>
+#include <stb/stb_perlin.h>
 
 void framebuffer_size_changed_callback(GLFWwindow* window, int width, int height)
 {
