@@ -29,7 +29,7 @@ glm::vec3 palette( const float t, const glm::vec3 a, const glm::vec3 b, const gl
 
 int main ()
 {
-    auto file_logger = spdlog::basic_logger_mt("file_logger", "log.txt");
+    auto file_logger = spdlog::basic_logger_mt("file_logger", "log.txt", true);
     spdlog::set_default_logger(file_logger);
     spdlog::info("program started");
 
