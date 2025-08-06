@@ -66,7 +66,7 @@ int main ()
     glfwSetFramebufferSizeCallback(window, framebuffer_size_changed_callback);
     while (!glfwWindowShouldClose(window))
     {
-        float time = glfwGetTime();
+        double time = glfwGetTime();
 
         glm::vec3 bg(palette(time*.1f,glm::vec3(0.5,0.5,0.5),glm::vec3(0.5,0.5,0.5),glm::vec3(2.0,1.0,0.0),glm::vec3(0.5,0.20,0.25)));
         glClearColor(bg.r, bg.g , bg.b, 1.0f);
