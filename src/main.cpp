@@ -63,6 +63,7 @@ int main ()
     glfwSetKeyCallback(window, key_callback);
 
     glfwMakeContextCurrent(window);
+    glfwSwapInterval(1);// 1 = vsync
     glfwSetFramebufferSizeCallback(window, framebuffer_size_changed_callback);
     while (!glfwWindowShouldClose(window))
     {
