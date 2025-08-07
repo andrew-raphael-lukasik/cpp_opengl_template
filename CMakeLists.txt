@@ -16,7 +16,6 @@ target_sources(MyProjectName PRIVATE src/libs/glad/glad.c)
 target_link_libraries(MyProjectName spdlog::spdlog)
 target_link_libraries(MyProjectName OpenGL::GL)
 target_link_libraries(MyProjectName glfw)
-target_link_libraries(MyProjectName glm)
 target_link_libraries(MyProjectName assimp)
 
 target_include_directories(MyProjectName PRIVATE
