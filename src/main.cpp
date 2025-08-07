@@ -3,7 +3,7 @@
 #include "glad/glad.h"
 #include <GLFW/glfw3.h>
 
-#include "main_shared.cpp"
+#include "main.h"
 #include "render.cpp"
 #include "input.cpp"
 #include "app.cpp"

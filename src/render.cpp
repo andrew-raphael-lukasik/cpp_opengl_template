@@ -1,6 +1,6 @@
 #pragma once
 
-#include "main_shared.cpp"
+#include "main.h"
 
 #include "glad/glad.h"
 #include <GLFW/glfw3.h>
@@ -151,5 +151,5 @@ namespace render
     {
         
     }
-    
+
 }

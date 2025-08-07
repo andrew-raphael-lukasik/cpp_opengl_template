@@ -12,7 +12,7 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
-#include "main_shared.cpp"
+#include "main.h"
 
 
 namespace app
@@ -79,5 +79,5 @@ namespace app
         glfwTerminate();
         spdlog::info("program has ended");
     }
-    
+
 }

@@ -1,13 +1,13 @@
 #pragma once
 
-#include "main_shared.cpp"
+#include "main.h"
 
 #include <GLFW/glfw3.h>
 
 
 namespace input
 {
-    
+
     EFuncState init ()
     {
         return EFuncState::Succeded;
