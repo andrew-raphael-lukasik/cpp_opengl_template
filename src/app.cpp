@@ -17,8 +17,10 @@
 
 namespace app
 {
+
     bool alive;
     GLFWwindow* window;
+
 
     void error_callback(int error, const char* description)
     {
@@ -31,6 +33,7 @@ namespace app
         if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
             glfwSetWindowShouldClose(window, GLFW_TRUE);
     }
+
 
     EFuncState init ()
     {
@@ -72,7 +75,9 @@ namespace app
     void close ()
     {
         alive = false;
-        spdlog::info("program has ended");
+        glfwDestroyWindow(window);
         glfwTerminate();
+        spdlog::info("program has ended");
     }
+    
 }

@@ -7,6 +7,7 @@
 
 namespace input
 {
+    
     EFuncState init ()
     {
         return EFuncState::Succeded;
@@ -21,4 +22,5 @@ namespace input
     {
         
     }
+    
 }

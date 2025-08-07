@@ -22,6 +22,12 @@
 namespace render
 {
 
+    GLuint program;
+    GLuint vertex_buffer, vertex_array;
+    GLuint vertex_shader, fragment_shader;
+    GLuint mvp_location, vpos_location, vcol_location;
+
+
     static const char* vertex_shader_text =
     "#version 330\n"
     "uniform mat4 MVP;\n"
@@ -65,10 +71,6 @@ namespace render
     // src: https://iquilezles.org/articles/palettes/
     glm::vec3 palette(const float t, const glm::vec3 a, const glm::vec3 b, const glm::vec3 c, const glm::vec3 d) { return a + b*cos(6.283185f*(c*t+d)); }
 
-    GLuint program;
-    GLuint vertex_buffer, vertex_array;
-    GLuint vertex_shader, fragment_shader;
-    GLuint mvp_location, vpos_location, vcol_location;
 
     EFuncState init (GLFWwindow* window)
     {
@@ -149,4 +151,5 @@ namespace render
     {
         
     }
+    
 }
