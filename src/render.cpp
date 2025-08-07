@@ -1,7 +1,3 @@
-#pragma once
-
-#include "main.h"
-
 #include "glad/glad.h"
 #include <GLFW/glfw3.h>
 
@@ -17,6 +13,10 @@
 #include "stb/stb_perlin.h"
 
 #include <spdlog/spdlog.h>
+
+#include "main.h"
+#include "render.h"
+#include "app.h"
 
 
 namespace render
@@ -72,7 +72,7 @@ namespace render
     glm::vec3 palette(const float t, const glm::vec3 a, const glm::vec3 b, const glm::vec3 c, const glm::vec3 d) { return a + b*cos(6.283185f*(c*t+d)); }
 
 
-    EFuncState init (GLFWwindow* window)
+    EFuncState init ()
     {
         // initialize glad
         if (!gladLoadGL()) {
@@ -82,7 +82,7 @@ namespace render
         }
         
         glfwSwapInterval(1);// 1 = vsync
-        glfwSetFramebufferSizeCallback(window, framebuffer_size_changed_callback);
+        glfwSetFramebufferSizeCallback(app::window, framebuffer_size_changed_callback);
 
         const GLubyte* version = glGetString(GL_VERSION);
         if( version )
@@ -119,12 +119,12 @@ namespace render
         return EFuncState::Succeded;
     }
 
-    void tick (GLFWwindow* window)
+    void tick ()
     {
         double time = glfwGetTime();
 
         int width, height;
-        glfwGetFramebufferSize(window, &width, &height);
+        glfwGetFramebufferSize(app::window, &width, &height);
         const float ratio = width / (float) height;
 
         glViewport(0, 0, width, height);
@@ -144,7 +144,7 @@ namespace render
         glBindVertexArray(vertex_array);
         glDrawArrays(GL_TRIANGLES, 0, 3);
         
-        glfwSwapBuffers(window);
+        glfwSwapBuffers(app::window);
     }
 
     void close ()

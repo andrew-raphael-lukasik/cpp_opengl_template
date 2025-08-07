@@ -1,11 +1,8 @@
-#pragma once
-
 #include <bits/unique_ptr.h>
 
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/basic_file_sink.h>
 
-#include "glad/glad.h"
 #include <GLFW/glfw3.h>
 
 #include <assimp/cimport.h>
@@ -13,11 +10,12 @@
 #include <assimp/postprocess.h>
 
 #include "main.h"
+#include "app.h"
 
 
 namespace app
 {
-
+    
     bool alive;
     GLFWwindow* window;
 
@@ -69,7 +67,9 @@ namespace app
 
     void tick ()
     {
-        
+        if (glfwWindowShouldClose(app::window)) {
+            alive = false;
+        }
     }
 
     void close ()

@@ -1,8 +1,7 @@
-#pragma once
+#include <GLFW/glfw3.h>
 
 #include "main.h"
-
-#include <GLFW/glfw3.h>
+#include "input.h"
 
 
 namespace input

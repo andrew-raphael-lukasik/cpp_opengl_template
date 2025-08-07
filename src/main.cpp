@@ -4,10 +4,10 @@
 #include <GLFW/glfw3.h>
 
 #include "main.h"
-#include "render.cpp"
-#include "input.cpp"
-#include "app.cpp"
-#include "game.cpp"
+#include "render.h"
+#include "input.h"
+#include "app.h"
+#include "game.h"
 
 
 int main ()
@@ -25,19 +25,19 @@ int main ()
         spdlog::error("input::init() failed, closing program now");
         return -1;
     }
-    if (render::init(app::window)!=EFuncState::Succeded) {
+    if (render::init()!=EFuncState::Succeded) {
         spdlog::error("render::init() failed, closing program now");
         return -1;
     }
 
     // main program loop
-    while (app::alive && !glfwWindowShouldClose(app::window))
+    while (app::alive)
     {
         // tick every module
         app::tick();
         input::tick();
         game::tick();
-        render::tick(app::window);
+        render::tick();
         
         glfwPollEvents();
     }

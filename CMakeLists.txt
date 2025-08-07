@@ -10,7 +10,14 @@ find_package(glfw3 3.4 REQUIRED)
 find_package(glm REQUIRED)
 find_package(assimp REQUIRED)
 
-add_executable(MyProjectName src/main.cpp)
+add_executable(MyProjectName
+    src/main.cpp
+    src/app.cpp
+    src/game.cpp
+    src/input.cpp
+    src/render.cpp
+)
+
 target_sources(MyProjectName PRIVATE src/libs/glad/glad.c)
 
 target_link_libraries(MyProjectName spdlog::spdlog)
