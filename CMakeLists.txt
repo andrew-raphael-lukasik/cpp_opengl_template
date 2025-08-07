@@ -10,20 +10,27 @@ find_package(glfw3 3.4 REQUIRED)
 find_package(glm REQUIRED)
 find_package(assimp REQUIRED)
 
-add_executable(MyProjectName
-    src/main.cpp
-    src/app.cpp
-    src/game.cpp
-    src/input.cpp
-    src/render.cpp
-)
+add_subdirectory(src/app)
+add_subdirectory(src/input)
+add_subdirectory(src/game)
+add_subdirectory(src/render)
+
+add_executable(MyProjectName src/main.cpp)
 
 target_sources(MyProjectName PRIVATE src/libs/glad/glad.c)
 
-target_link_libraries(MyProjectName spdlog::spdlog)
-target_link_libraries(MyProjectName OpenGL::GL)
-target_link_libraries(MyProjectName glfw)
-target_link_libraries(MyProjectName assimp)
+target_link_libraries(MyProjectName PRIVATE
+    app
+    game
+    input
+    render
+
+    spdlog::spdlog
+    OpenGL::GL
+    glm::glm
+    glfw
+    assimp
+)
 
 target_include_directories(MyProjectName PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/libs/

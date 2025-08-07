@@ -4,10 +4,10 @@
 #include <GLFW/glfw3.h>
 
 #include "main.h"
-#include "render.h"
-#include "input.h"
-#include "app.h"
-#include "game.h"
+#include "render/render.h"
+#include "input/input.h"
+#include "app/app.h"
+#include "game/game.h"
 
 
 int main ()

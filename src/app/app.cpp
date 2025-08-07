@@ -1,3 +1,6 @@
+#include "app.h"
+#include "../main.h"
+
 #include <bits/unique_ptr.h>
 
 #include <spdlog/spdlog.h>
@@ -8,9 +11,6 @@
 #include <assimp/cimport.h>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
-
-#include "main.h"
-#include "app.h"
 
 
 namespace app

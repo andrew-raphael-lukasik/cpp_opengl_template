@@ -1,7 +1,7 @@
-#include <GLFW/glfw3.h>
-
-#include "main.h"
 #include "input.h"
+#include "../main.h"
+
+#include <GLFW/glfw3.h>
 
 
 namespace input

@@ -1,4 +1,8 @@
-#include "glad/glad.h"
+#include "render.h"
+#include "../main.h"
+#include "app.h"
+
+#include "../libs/glad/glad.h"
 #include <GLFW/glfw3.h>
 
 #include "glm/glm.hpp"
@@ -13,10 +17,6 @@
 #include "stb/stb_perlin.h"
 
 #include <spdlog/spdlog.h>
-
-#include "main.h"
-#include "render.h"
-#include "app.h"
 
 
 namespace render

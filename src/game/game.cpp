@@ -1,7 +1,7 @@
-#include <GLFW/glfw3.h>
-
-#include "main.h"
 #include "game.h"
+#include "../main.h"
+
+#include <GLFW/glfw3.h>
 
 
 namespace game
