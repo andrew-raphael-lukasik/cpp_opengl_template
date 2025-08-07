@@ -1,13 +1,10 @@
+#include <bits/unique_ptr.h>
+
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/basic_file_sink.h>
 
 #include "glad/glad.h"
 #include <GLFW/glfw3.h>
-
-#include <glm/glm.hpp>
-#include <glm/vec3.hpp>
-#include <glm/mat3x3.hpp>
-#include <glm/mat4x4.hpp>
 
 #include <assimp/cimport.h>
 #include <assimp/scene.h>
@@ -18,6 +15,7 @@
 #define STB_PERLIN_IMPLEMENTATION
 #include "stb/stb_perlin.h"
 
+#include "main_shared.cpp"
 #include "rendering.cpp"
 
 
@@ -62,7 +60,9 @@ int main ()
     glfwSetKeyCallback(window, key_callback);
     glfwMakeContextCurrent(window);
 
-    if (!renderingInit(window))
+    // create renderer
+    auto renderer = std::make_unique<Renderer>();
+    if (renderer.get()->init(window)!=EFuncState::Succeded)
     {
         return -1;
     }
@@ -72,7 +72,7 @@ int main ()
     {
         double time = glfwGetTime();
         
-        renderingTick(window, time);
+        renderer.get()->tick(window);
         
         glfwPollEvents();
     }
