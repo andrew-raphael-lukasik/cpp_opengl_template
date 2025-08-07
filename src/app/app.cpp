@@ -1,6 +1,7 @@
 #include "app.h"
 #include "../main.h"
 
+#include <filesystem>
 #include <bits/unique_ptr.h>
 
 #include <spdlog/spdlog.h>
@@ -39,6 +40,7 @@ namespace app
         auto file_logger = spdlog::basic_logger_mt("file_logger", "log.txt", true);
         spdlog::set_default_logger(file_logger);
         spdlog::info("program started");
+        spdlog::info("current working directory: {}", std::filesystem::current_path().string());
 
         // initialize glfw
         if (!glfwInit())
