@@ -9,7 +9,6 @@ target_include_directories(render PUBLIC
 target_link_libraries(render PUBLIC app)
 
 # copy shaders next to executable:
-message("")
 set(SHADER_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/shaders)
 set(SHADER_TARGET_DIR ${CMAKE_BINARY_DIR}/bin/shaders)
 message("copying shaders \n\tfrom: ${SHADER_SOURCE_DIR}\n\tto: ${SHADER_TARGET_DIR}")

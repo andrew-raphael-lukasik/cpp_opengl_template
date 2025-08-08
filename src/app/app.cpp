@@ -64,6 +64,7 @@ namespace app
     {
         if (glfwWindowShouldClose(app::window)) {
             alive = false;
+            spdlog::info("app::tick(): alive = false");
         }
     }
 
